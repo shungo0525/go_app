@@ -26,6 +26,11 @@ func main() {
 			})
 	})
 
+	router.GET("/json", func(ctx *gin.Context) {
+			todos := dbGetAll()
+			ctx.JSON(200,  gin.H{"todos": todos,})
+	})
+
 	//Home
 	router.GET("/home", func(ctx *gin.Context) {
 			ctx.HTML(200, "home.html", gin.H{})
